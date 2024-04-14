@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    
+</head>
+<body>
+  
+    <script>
+         const urlParams = new URLSearchParams(window.location.search);
+        
+        const emailBodyEncoded = urlParams.get('body');
+        const senderEmail = urlParams.get('sender');
+        const subject = urlParams.get('subject');
+        
+        const emailBody = decodeURIComponent(emailBodyEncoded);
+        const sender = decodeURIComponent(senderEmail);
+        const subj = decodeURIComponent(subject);
+
+         const url = 'https://script.google.com/macros/s/AKfycbyWQhL-kc_o8Isv_K-K2sd7L8timER6-f069H8huBsk4afZsoG-wdoTxYAR0DP7FUSxcQ/exec';
+        
+    
+            fetch(url, {
+                method: 'POST',
+                body: {
+                    "body":emailBody,
+                    "subject":subj,
+                    "senderEmail":senderEmail
+                }
+            })
+            .then(response => response.text()) 
+            .then(data => {
+                console.log(data); 
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error); 
+            });
+       
+    </script>
+</body>
+</html>
