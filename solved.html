@@ -3,42 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
-    
+    <title>Feedback Form</title>
 </head>
 <body>
-  
     <script>
-         const urlParams = new URLSearchParams(window.location.search);
-        
-        const emailBodyEncoded = urlParams.get('body');
-        const senderEmail = urlParams.get('sender');
-        const subject = urlParams.get('subject');
-        
-        const emailBody = decodeURIComponent(emailBodyEncoded);
-        const sender = decodeURIComponent(senderEmail);
-        const subj = decodeURIComponent(subject);
+        document.addEventListener('DOMContentLoaded', () => {
+            const url = 'https://script.google.com/macros/s/AKfycbyWQhL-kc_o8Isv_K-K2sd7L8timER6-f069H8huBsk4afZsoG-wdoTxYAR0DP7FUSxcQ/exec';
 
-         const url = 'https://script.google.com/macros/s/AKfycbyWQhL-kc_o8Isv_K-K2sd7L8timER6-f069H8huBsk4afZsoG-wdoTxYAR0DP7FUSxcQ/exec';
-        
-    
+            const urlParams = new URLSearchParams(window.location.search);
+            const emailBody = urlParams.get('body');
+            const senderEmail = urlParams.get('sender');
+            const subject = urlParams.get('subject');
+
+            const formData = {
+                body: emailBody,
+                subject: subject,
+                senderEmail: senderEmail
+            };
+
             fetch(url, {
                 method: 'POST',
-                body: {
-                    "body":emailBody,
-                    "subject":subj,
-                    "senderEmail":senderEmail
-                }
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
             })
-            .then(response => response.text()) 
-            .then(data => {
-                console.log(data); 
-                form.reset();
+            .then(response => {
+                console.log('Request sent successfully');
+                // Handle successful request here (e.g., display success message)
             })
             .catch(error => {
-                console.error('Error:', error); 
+                console.error('Error:', error);
+                // Handle error (e.g., display error message)
             });
-       
+        });
     </script>
 </body>
 </html>
