@@ -126,13 +126,14 @@
                     <input type="hidden" name="senderEmail" id="senderEmail">
                 </div>
                 <div>
-                    <button type="submit">Submit</button>
+                    <button id="buttontosubmit" type="submit">Submit</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
+        document.getElementById('buttontosubmit').style.display = 'none';
         const urlParams = new URLSearchParams(window.location.search);
         const emailBodyEncoded = urlParams.get('body');
         const senderEmail = urlParams.get('sender');

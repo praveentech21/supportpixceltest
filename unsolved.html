@@ -109,9 +109,9 @@
 </head>
 
 <body>
-    <h1>Thank you for your valuable Feedback</h1>
-    <h2>Our Support Team Will Contact You Soon</h2>
     <div class="container">
+        <h1>Thank you for your valuable Feedback</h1>
+        <h2>Our Support Team Will Contact You Soon</h2>
         <div class="main">
             <form method="post" id="form" action="https://script.google.com/macros/s/AKfycbxJMxN3kvX2QmYuzGaXHF909kUtx1QwDn13G6bDEwucY7K5x7vkPh3KZfmY7IFc17EERA/exec">
                 <div class="form-outer">
@@ -124,13 +124,15 @@
                     <input type="hidden" name="senderEmail" id="senderEmail">
                 </div>
                 <div>
-                    <button type="submit">Submit</button>
+                    <button id="buttontosubmit" type="submit">Submit</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
+        document.getElementById('buttontosubmit').style.display = 'none';
+
         const urlParams = new URLSearchParams(window.location.search);
         const emailBodyEncoded = urlParams.get('body');
         const senderEmail = urlParams.get('sender');
