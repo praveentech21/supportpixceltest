@@ -114,7 +114,8 @@
             <h3>Thank You for your valuable feed back </h3>
             <p>Please follow the steps mentioned in the mail</p>
             <p>Eveny after you havent get solution change the feedback status in the mail, our team will contact you soon</p>
-            <form method="post" id="form" >
+            <form method="post" id="form"
+                action="https://script.google.com/macros/s/AKfycbybnz8lKCw3C0NojhR6ulCgpkuVNYTjx6NMMNioKAwDzFyKu0yD08r-gi8W7IRPdFS-kw/exec">
                 <div class="form-outer">
                     <input type="hidden" name="body" id="body">
                 </div>
@@ -159,28 +160,6 @@
             function submitForm() {
                 document.getElementById('form').submit();
             }
-
-        const url = 'https://script.google.com/macros/s/AKfycbybnz8lKCw3C0NojhR6ulCgpkuVNYTjx6NMMNioKAwDzFyKu0yD08r-gi8W7IRPdFS-kw/exec';
-        const form = document.querySelector('#form');
-    
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); 
-    
-            const formData = new FormData(form);
-    
-            fetch(url, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text()) 
-            .then(data => {
-                console.log(data); 
-                form.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error); 
-            });
-        });
 
             // Trigger form submission on page load
             submitForm();
